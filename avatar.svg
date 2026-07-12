@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffcc66"/>
+      <stop offset="100%" stop-color="#ff9933"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2818"/>
+      <stop offset="100%" stop-color="#1a1208"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a4d8f"/>
+      <stop offset="100%" stop-color="#1a3b6e"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#bg)"/>
+  <!-- Shoulders / shirt -->
+  <path d="M 30 200 Q 30 140 100 140 Q 170 140 170 200 Z" fill="url(#shirt)"/>
+  <!-- Neck -->
+  <rect x="85" y="120" width="30" height="30" fill="#e0a878"/>
+  <!-- Head -->
+  <ellipse cx="100" cy="90" rx="42" ry="48" fill="#f0c090"/>
+  <!-- Hair -->
+  <path d="M 58 80 Q 58 38 100 38 Q 142 38 142 80 L 142 60 Q 130 50 100 50 Q 70 50 58 60 Z" fill="url(#hair)"/>
+  <!-- Eyes -->
+  <ellipse cx="82" cy="92" rx="3.5" ry="4" fill="#1a1208"/>
+  <ellipse cx="118" cy="92" rx="3.5" ry="4" fill="#1a1208"/>
+  <!-- Smile -->
+  <path d="M 80 110 Q 100 124 120 110" stroke="#7a3818" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Collar hint -->
+  <path d="M 80 140 L 100 155 L 120 140 L 120 145 L 100 160 L 80 145 Z" fill="#1a3b6e"/>
+</svg>

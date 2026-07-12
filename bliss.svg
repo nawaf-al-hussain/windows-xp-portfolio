@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a8de0"/>
+      <stop offset="55%" stop-color="#6cb4f0"/>
+      <stop offset="100%" stop-color="#b8e0f5"/>
+    </linearGradient>
+    <linearGradient id="hill1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a9e3a"/>
+      <stop offset="100%" stop-color="#2f6e1f"/>
+    </linearGradient>
+    <linearGradient id="hill2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8cc850"/>
+      <stop offset="100%" stop-color="#4a8c2e"/>
+    </linearGradient>
+    <linearGradient id="hill3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8e070"/>
+      <stop offset="100%" stop-color="#6cb438"/>
+    </linearGradient>
+    <radialGradient id="cloud" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <!-- Clouds -->
+  <ellipse cx="280" cy="220" rx="220" ry="50" fill="url(#cloud)"/>
+  <ellipse cx="380" cy="240" rx="180" ry="40" fill="url(#cloud)"/>
+  <ellipse cx="700" cy="160" rx="280" ry="60" fill="url(#cloud)"/>
+  <ellipse cx="1200" cy="200" rx="240" ry="50" fill="url(#cloud)"/>
+  <ellipse cx="1500" cy="180" rx="200" ry="45" fill="url(#cloud)"/>
+  <ellipse cx="1700" cy="260" rx="180" ry="40" fill="url(#cloud)"/>
+  <ellipse cx="900" cy="280" rx="320" ry="50" fill="url(#cloud)" opacity="0.7"/>
+  <!-- Distant hills (back) -->
+  <path d="M 0 720 Q 200 660 450 690 Q 700 720 1000 670 Q 1300 640 1600 680 Q 1800 700 1920 680 L 1920 1080 L 0 1080 Z" fill="url(#hill1)" opacity="0.85"/>
+  <!-- Middle hills -->
+  <path d="M 0 820 Q 300 760 600 800 Q 900 840 1200 790 Q 1500 760 1920 800 L 1920 1080 L 0 1080 Z" fill="url(#hill2)"/>
+  <!-- Front hill -->
+  <path d="M 0 920 Q 250 860 550 900 Q 850 940 1200 880 Q 1500 850 1920 900 L 1920 1080 L 0 1080 Z" fill="url(#hill3)"/>
+</svg>
