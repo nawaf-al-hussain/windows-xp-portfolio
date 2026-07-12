@@ -1,0 +1,1218 @@
+/* ====================================================
+   Windows XP Portfolio - Stylesheet
+   ==================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --xp-blue: #245edb;
+  --xp-blue-light: #4189ee;
+  --xp-blue-dark: #0c2c8c;
+  --xp-green: #5eba7d;
+  --xp-green-dark: #379b4d;
+  --xp-title-grad-start: #0058e6;
+  --xp-title-grad-end: #3993ff;
+  --xp-taskbar: #245edb;
+  --xp-taskbar-grad: linear-gradient(180deg, #2868d8 0%, #245edb 8%, #1a4cb5 50%, #245edb 92%, #3993ff 100%);
+  --xp-window-bg: #ece9d8;
+  --xp-window-border: #0831d9;
+  --xp-text: #000000;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+  font-size: 11px;
+  color: var(--xp-text);
+  background: #000;
+  user-select: none;
+  cursor: default;
+}
+
+.hidden { display: none !important; }
+
+/* ====================================================
+   BOOT SCREEN
+   ==================================================== */
+#boot-screen {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.boot-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.boot-windows-flag {
+  width: 80px;
+  height: 70px;
+  position: relative;
+  transform: perspective(200px) rotateY(-15deg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  animation: flag-wave 2s ease-in-out infinite;
+}
+
+.boot-windows-flag.small {
+  width: 28px;
+  height: 24px;
+  gap: 1.5px;
+}
+
+.boot-windows-flag span {
+  display: block;
+  border-radius: 2px;
+}
+
+.boot-windows-flag span:nth-child(1) {
+  background: linear-gradient(135deg, #f8741a, #ff9a3c);
+  transform: skewY(-15deg);
+}
+.boot-windows-flag span:nth-child(2) {
+  background: linear-gradient(135deg, #18a0ee, #4fc3f7);
+  transform: skewY(-15deg);
+}
+.boot-windows-flag span:nth-child(3) {
+  background: linear-gradient(135deg, #18a0ee, #4fc3f7);
+  transform: skewY(-15deg);
+}
+.boot-windows-flag span:nth-child(4) {
+  background: linear-gradient(135deg, #18a0ee, #4fc3f7);
+  transform: skewY(-15deg);
+}
+
+@keyframes flag-wave {
+  0%, 100% { transform: perspective(200px) rotateY(-15deg) rotateX(0deg); }
+  50% { transform: perspective(200px) rotateY(-15deg) rotateX(8deg); }
+}
+
+.boot-text {
+  text-align: center;
+  color: #ffffff;
+}
+.boot-text h1 {
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.boot-text h1 sub {
+  font-size: 10px;
+  vertical-align: super;
+}
+.boot-text h2 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.boot-text h2 sub {
+  font-size: 11px;
+  vertical-align: super;
+}
+
+.boot-loader {
+  margin-top: 30px;
+  width: 160px;
+  height: 14px;
+  background: #1a1a1a;
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+}
+
+.boot-loader-bar {
+  position: absolute;
+  top: 0;
+  left: -40px;
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #4189ee 50%, transparent);
+  animation: boot-loader 1.6s linear infinite;
+}
+
+@keyframes boot-loader {
+  0% { left: -40px; }
+  100% { left: 160px; }
+}
+
+.boot-copyright {
+  position: absolute;
+  bottom: 30px;
+  color: #888;
+  font-size: 11px;
+}
+
+/* ====================================================
+   LOGIN / WELCOME SCREEN
+   ==================================================== */
+#login-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #5e7cb8 0%, #4a6cb0 50%, #2c5dc4 100%);
+  display: flex;
+  flex-direction: column;
+  z-index: 9000;
+}
+
+.login-top-bar {
+  height: 70px;
+  background: linear-gradient(180deg, #2868d8 0%, #1a4cb5 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  border-bottom: 2px solid #1a3b8c;
+}
+
+.login-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.login-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.login-divider-left, .login-divider-right {
+  width: 1px;
+  height: 60%;
+  background: rgba(255,255,255,0.3);
+}
+
+.login-user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 240px;
+}
+
+.login-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.login-user:hover {
+  background: rgba(255,255,255,0.15);
+}
+.login-user.selected {
+  background: rgba(255,255,255,0.25);
+}
+
+.login-avatar {
+  width: 60px;
+  height: 60px;
+  border: 2px solid white;
+  background: linear-gradient(135deg, #ffcc66, #ff9933);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  border-radius: 4px;
+}
+
+.login-user-info {
+  color: white;
+}
+.login-user-name {
+  font-size: 18px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+.login-user-hint {
+  font-size: 11px;
+  color: #d8e4f4;
+  margin-top: 2px;
+}
+
+.login-side {
+  color: white;
+  max-width: 200px;
+  padding: 0 20px;
+}
+.login-side-text {
+  font-size: 13px;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.login-bottom-bar {
+  height: 50px;
+  background: linear-gradient(180deg, #1a4cb5 0%, #0c2c8c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  color: white;
+  font-size: 11px;
+  border-top: 2px solid #1a3b8c;
+}
+.login-bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+.login-bottom-left:hover { background: rgba(255,255,255,0.15); }
+.login-bottom-left::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #ff6666, #cc0000);
+  border-radius: 50%;
+}
+.login-bottom-right {
+  max-width: 400px;
+  font-style: italic;
+  color: #c8d4e8;
+}
+
+/* ====================================================
+   DESKTOP
+   ==================================================== */
+#desktop {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+.wallpaper {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, #4a8ce8 0%, #2c5dc4 40%, #1a3b8c 100%),
+    linear-gradient(180deg, #6ba3e8 0%, #2c5dc4 100%);
+  background-blend-mode: multiply;
+  background-size: cover;
+}
+
+.wallpaper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(255, 200, 100, 0.4) 0%, transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(100, 200, 255, 0.4) 0%, transparent 30%);
+  pointer-events: none;
+}
+
+.wallpaper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center 70%, rgba(255, 220, 150, 0.5) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Desktop Icons */
+.desktop-icons {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 2;
+}
+
+.desktop-icon {
+  width: 80px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  border-radius: 2px;
+  text-align: center;
+}
+.desktop-icon:hover {
+  background: rgba(255,255,255,0.15);
+}
+.desktop-icon.selected {
+  background: rgba(80, 130, 220, 0.5);
+  outline: 1px dotted rgba(255,255,255,0.6);
+}
+
+.icon-img {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.icon-mycomputer {
+  background: linear-gradient(135deg, #d4d4d4, #888);
+  border-radius: 4px;
+  position: relative;
+}
+.icon-mycomputer::before {
+  content: "🖥";
+  font-size: 26px;
+}
+
+.icon-folder {
+  font-size: 32px;
+}
+.icon-folder::before { content: "📁"; }
+
+.icon-explorer {
+  font-size: 28px;
+}
+.icon-explorer::before { content: "🚀"; }
+
+.icon-notepad::before { content: "📝"; }
+.icon-notepad { font-size: 28px; }
+
+.icon-email::before { content: "✉️"; }
+.icon-email { font-size: 28px; }
+
+.icon-ie::before { content: "🌐"; }
+.icon-ie { font-size: 28px; }
+
+.icon-mine::before { content: "💣"; }
+.icon-mine { font-size: 28px; }
+
+.icon-recycle::before { content: "🗑️"; }
+.icon-recycle { font-size: 28px; }
+
+.icon-label {
+  color: white;
+  font-size: 11px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  word-wrap: break-word;
+  line-height: 1.2;
+  max-width: 80px;
+}
+
+/* ====================================================
+   WINDOWS
+   ==================================================== */
+#windows-container {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.xp-window {
+  position: absolute;
+  background: var(--xp-window-bg);
+  border: 1px solid #0831d9;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  min-width: 280px;
+  min-height: 200px;
+}
+
+.xp-window.active {
+  z-index: 100;
+  box-shadow: 4px 4px 14px rgba(0,0,0,0.5);
+}
+
+.xp-window.minimized {
+  display: none;
+}
+
+.window-titlebar {
+  height: 28px;
+  background: linear-gradient(180deg, #0058e6 0%, #3993ff 8%, #1a4cb5 50%, #3993ff 92%, #0058e6 100%);
+  border-radius: 7px 7px 0 0;
+  display: flex;
+  align-items: center;
+  padding: 0 3px 0 6px;
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  cursor: move;
+  user-select: none;
+}
+
+.window-titlebar.inactive {
+  background: linear-gradient(180deg, #7494d8 0%, #9bb5e6 8%, #6a8ad4 50%, #9bb5e6 92%, #7494d8 100%);
+}
+
+.window-title-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.window-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.window-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.win-btn {
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 3px;
+  background: linear-gradient(180deg, #3993ff 0%, #1663e6 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Marlett", sans-serif;
+  line-height: 1;
+}
+.win-btn:hover {
+  background: linear-gradient(180deg, #4fa3ff 0%, #2074f0 100%);
+}
+.win-btn:active {
+  background: linear-gradient(180deg, #1663e6 0%, #3993ff 100%);
+}
+.win-btn.close {
+  background: linear-gradient(180deg, #e87555 0%, #cc3a1a 100%);
+}
+.win-btn.close:hover {
+  background: linear-gradient(180deg, #f08565 0%, #d94a2a 100%);
+}
+
+.window-menubar {
+  background: var(--xp-window-bg);
+  display: flex;
+  padding: 2px 4px;
+  font-size: 11px;
+  border-bottom: 1px solid #aca899;
+}
+.window-menubar > span {
+  padding: 2px 8px;
+  cursor: default;
+}
+.window-menubar > span:hover {
+  background: #316ac5;
+  color: white;
+}
+
+.window-toolbar {
+  background: linear-gradient(180deg, #f5f4ea 0%, #e8e6d4 100%);
+  padding: 4px 8px;
+  border-bottom: 1px solid #aca899;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.window-content {
+  flex: 1;
+  overflow: auto;
+  background: white;
+  padding: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #000;
+}
+
+.window-statusbar {
+  height: 18px;
+  background: var(--xp-window-bg);
+  border-top: 1px solid #aca899;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 11px;
+  color: #444;
+}
+
+/* ====================================================
+   TASKBAR
+   ==================================================== */
+#taskbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: var(--xp-taskbar-grad);
+  display: flex;
+  align-items: center;
+  z-index: 5000;
+  border-top: 1px solid #4a8ce8;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+}
+
+#start-button {
+  height: 24px;
+  padding: 0 12px 4px 6px;
+  border: 1px solid #245edb;
+  border-radius: 0 8px 8px 0;
+  background: linear-gradient(180deg, #5eba7d 0%, #379b4d 8%, #2d8a3f 50%, #5eba7d 92%, #379b4d 100%);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  font-style: italic;
+  font-family: Tahoma, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  margin-left: -2px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+}
+#start-button:hover {
+  background: linear-gradient(180deg, #6bca8d 0%, #47ab5d 8%, #3a9a4f 50%, #6bca8d 92%, #47ab5d 100%);
+}
+#start-button.active {
+  background: linear-gradient(180deg, #379b4d 0%, #2d8a3f 50%, #379b4d 100%);
+}
+
+.start-flag {
+  width: 18px;
+  height: 16px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  transform: perspective(60px) rotateY(-12deg);
+}
+.start-flag span:nth-child(1) { background: #f8741a; border-radius: 1px; transform: skewY(-15deg); }
+.start-flag span:nth-child(2) { background: #18a0ee; border-radius: 1px; transform: skewY(-15deg); }
+.start-flag span:nth-child(3) { background: #18a0ee; border-radius: 1px; transform: skewY(-15deg); }
+.start-flag span:nth-child(4) { background: #18a0ee; border-radius: 1px; transform: skewY(-15deg); }
+
+#taskbar-separator {
+  width: 10px;
+  height: 100%;
+}
+
+#taskbar-items {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 4px;
+  height: 100%;
+}
+
+.taskbar-item {
+  height: 22px;
+  min-width: 120px;
+  max-width: 160px;
+  padding: 0 8px;
+  background: linear-gradient(180deg, #3993ff 0%, #1a4cb5 100%);
+  border: 1px solid #1a3b8c;
+  border-radius: 3px;
+  color: white;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.taskbar-item:hover {
+  background: linear-gradient(180deg, #4fa3ff 0%, #2074f0 100%);
+}
+.taskbar-item.active {
+  background: linear-gradient(180deg, #1a4cb5 0%, #3993ff 100%);
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+.taskbar-item-icon {
+  font-size: 14px;
+}
+
+#system-tray {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px 0 6px;
+  background: linear-gradient(180deg, #1290e9 0%, #0e6dc3 100%);
+  border-left: 1px solid #0831d9;
+  border-right: 1px solid #0831d9;
+  color: white;
+  font-size: 11px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+}
+
+.tray-icon {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#clock {
+  min-width: 50px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ====================================================
+   START MENU
+   ==================================================== */
+#start-menu {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 380px;
+  background: white;
+  border: 1px solid #0c3aab;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 4px -2px 12px rgba(0,0,0,0.4);
+  z-index: 6000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: startmenu-slide 0.15s ease-out;
+}
+
+@keyframes startmenu-slide {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.start-menu-header {
+  height: 56px;
+  background: linear-gradient(180deg, #3993ff 0%, #1663e6 8%, #0c2c8c 100%);
+  border-bottom: 2px solid #ec7e30;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 10px;
+  color: white;
+}
+
+.start-menu-avatar {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #ffcc66, #ff9933);
+  border: 2px solid #ec7e30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  border-radius: 4px;
+}
+
+.start-menu-username {
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.start-menu-body {
+  display: flex;
+  background: white;
+}
+
+.start-menu-left {
+  width: 200px;
+  background: white;
+  padding: 4px;
+}
+
+.start-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 12px;
+}
+.start-item:hover {
+  background: linear-gradient(180deg, #2f71cd 0%, #1a4cb5 100%);
+  color: white;
+}
+.start-item-icon {
+  font-size: 22px;
+  width: 24px;
+  text-align: center;
+}
+.start-item-text b {
+  font-weight: 700;
+}
+
+.start-separator {
+  height: 1px;
+  background: #d4d0c8;
+  margin: 4px 8px;
+  border-bottom: 1px solid white;
+}
+
+.start-menu-right {
+  width: 180px;
+  background: linear-gradient(180deg, #d3e5fa 0%, #b9d4f5 100%);
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.start-right-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0c2c8c;
+  padding: 4px 10px 8px 10px;
+  border-bottom: 1px solid #98b9e0;
+  margin-bottom: 4px;
+}
+
+.start-right-item {
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #0c2c8c;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.start-right-item:hover {
+  background: linear-gradient(180deg, #2f71cd 0%, #1a4cb5 100%);
+  color: white;
+}
+
+.start-menu-footer {
+  height: 38px;
+  background: linear-gradient(180deg, #3993ff 0%, #1663e6 50%, #0c2c8c 100%);
+  border-top: 2px solid #ec7e30;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px;
+  gap: 12px;
+  color: white;
+}
+
+.start-footer-left, .start-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 11px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+}
+.start-footer-left:hover, .start-footer-right:hover {
+  background: rgba(255,255,255,0.15);
+}
+.start-footer-icon { font-size: 18px; }
+
+/* ====================================================
+   WINDOW CONTENT STYLES
+   ==================================================== */
+.about-content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.about-avatar {
+  width: 100px;
+  height: 120px;
+  background: linear-gradient(135deg, #ffcc66, #ff9933);
+  border: 2px solid #245edb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70px;
+  flex-shrink: 0;
+}
+.about-text h2 {
+  color: #245edb;
+  margin-bottom: 6px;
+}
+.about-text h3 {
+  color: #666;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.about-text p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.projects-content {
+  padding: 0;
+}
+.projects-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 12px;
+}
+.project-card {
+  border: 1px solid #aca899;
+  background: #f5f4ea;
+  padding: 8px;
+  cursor: pointer;
+  transition: border 0.15s;
+}
+.project-card:hover {
+  border-color: #245edb;
+  background: #ece9d8;
+}
+.project-thumb {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(135deg, #4189ee, #245edb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+.project-title {
+  font-weight: 700;
+  color: #245edb;
+  margin-bottom: 2px;
+}
+.project-desc {
+  font-size: 11px;
+  color: #444;
+  line-height: 1.3;
+}
+
+.skills-content {
+  padding: 12px;
+}
+.skills-section {
+  margin-bottom: 14px;
+}
+.skills-section h3 {
+  color: #245edb;
+  margin-bottom: 6px;
+  font-size: 13px;
+  border-bottom: 1px solid #d4d0c8;
+  padding-bottom: 2px;
+}
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+.skill-name {
+  width: 100px;
+  font-weight: 700;
+}
+.skill-bar {
+  flex: 1;
+  height: 14px;
+  background: #ece9d8;
+  border: 1px solid #aca899;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(180deg, #5eba7d 0%, #379b4d 100%);
+}
+.skill-percent {
+  width: 36px;
+  text-align: right;
+  color: #666;
+}
+
+.resume-content {
+  padding: 0;
+  font-family: "Consolas", "Courier New", monospace;
+}
+.resume-content pre {
+  margin: 0;
+  padding: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #000;
+}
+
+.contact-content {
+  padding: 16px;
+}
+.contact-content h2 {
+  color: #245edb;
+  margin-bottom: 12px;
+}
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px dotted #d4d0c8;
+}
+.contact-icon {
+  font-size: 22px;
+  width: 28px;
+  text-align: center;
+}
+.contact-label {
+  width: 80px;
+  font-weight: 700;
+  color: #444;
+}
+.contact-value {
+  color: #245edb;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.contact-value:hover {
+  color: #0c2c8c;
+}
+
+/* Internet Explorer window */
+.ie-content {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.ie-toolbar {
+  background: linear-gradient(180deg, #f5f4ea 0%, #e8e6d4 100%);
+  border-bottom: 1px solid #aca899;
+  padding: 4px 8px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.ie-toolbar button {
+  padding: 3px 8px;
+  background: linear-gradient(180deg, #f5f4ea, #d4d0c8);
+  border: 1px solid #aca899;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+}
+.ie-toolbar button:hover {
+  background: linear-gradient(180deg, #ffffff, #ece9d8);
+}
+.ie-address {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+}
+.ie-address input {
+  flex: 1;
+  padding: 2px 6px;
+  border: 1px solid #7f9db9;
+  font-size: 11px;
+}
+.ie-page {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  overflow: auto;
+  text-align: center;
+}
+.ie-page h1 {
+  color: #245edb;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+.ie-page p {
+  margin-bottom: 8px;
+}
+
+/* Minesweeper */
+.mine-content {
+  padding: 0;
+  background: #c0c0c0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px;
+}
+.mine-header {
+  background: #c0c0c0;
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  margin-bottom: 6px;
+}
+.mine-counter {
+  background: black;
+  color: red;
+  font-family: "Consolas", monospace;
+  font-size: 18px;
+  padding: 2px 4px;
+  font-weight: 700;
+  border: 1px solid #808080;
+}
+.mine-smiley {
+  font-size: 20px;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+}
+.mine-smiley:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+.mine-grid {
+  display: grid;
+  gap: 0;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+.mine-cell {
+  width: 18px;
+  height: 18px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: "Consolas", monospace;
+}
+.mine-cell.revealed {
+  border: 1px solid #808080;
+  background: #c0c0c0;
+}
+.mine-cell.mine { background: red; }
+.mine-cell[data-num="1"] { color: blue; }
+.mine-cell[data-num="2"] { color: green; }
+.mine-cell[data-num="3"] { color: red; }
+.mine-cell[data-num="4"] { color: navy; }
+.mine-cell[data-num="5"] { color: maroon; }
+.mine-cell[data-num="6"] { color: teal; }
+.mine-cell[data-num="7"] { color: black; }
+.mine-cell[data-num="8"] { color: gray; }
+
+/* Recycle Bin */
+.recycle-content {
+  padding: 16px;
+  text-align: center;
+}
+.recycle-content .big-icon {
+  font-size: 80px;
+  margin-bottom: 12px;
+}
+.recycle-content h2 {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* ====================================================
+   BSOD (Blue Screen of Death)
+   ==================================================== */
+#bsod {
+  position: fixed;
+  inset: 0;
+  background: #0000a8;
+  color: white;
+  z-index: 20000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  font-family: "Consolas", "Courier New", monospace;
+}
+.bsod-content {
+  max-width: 700px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.bsod-content p { margin-bottom: 12px; }
+.bsod-bottom {
+  margin-top: 20px !important;
+}
+
+/* ====================================================
+   WINDOW RESIZE HANDLES
+   ==================================================== */
+.xp-window .resize-handle {
+  position: absolute;
+  z-index: 1;
+}
+.xp-window .resize-handle.e {
+  right: 0; top: 30px; bottom: 0; width: 4px; cursor: e-resize;
+}
+.xp-window .resize-handle.s {
+  left: 0; right: 0; bottom: 0; height: 4px; cursor: s-resize;
+}
+.xp-window .resize-handle.se {
+  right: 0; bottom: 0; width: 12px; height: 12px; cursor: se-resize;
+}
+
+/* ====================================================
+   MOBILE / SMALL SCREEN
+   ==================================================== */
+@media (max-width: 720px) {
+  .desktop-icons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-width: 100%;
+  }
+  .desktop-icon { width: 70px; }
+  .icon-img { width: 32px; height: 32px; font-size: 26px; }
+  .icon-label { font-size: 10px; }
+  #start-menu { width: 100%; }
+  .start-menu-body { flex-direction: column; }
+  .start-menu-left, .start-menu-right { width: 100%; }
+  .taskbar-item { min-width: 90px; max-width: 120px; }
+  .projects-list { grid-template-columns: 1fr; }
+}
