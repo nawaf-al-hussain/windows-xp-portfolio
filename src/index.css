@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Tahoma", "Segoe UI", "Inter", sans-serif;
+  --font-serif: "Times New Roman", Georgia, serif;
+  --font-mono: "Consolas", "Courier New", monospace;
+  --color-xp-blue: #003399;
+  --color-xp-blue-light: #2562cb;
+  --color-xp-green: #3c8141;
+  --color-xp-green-light: #4c9d53;
+  --color-xp-taskbar: #245edb;
+  --color-window-bg: #ece9d8;
+  --color-window-title: #0055e5;
+}
+
+@layer base {
+  html, body, #root {
+    @apply m-0 p-0 w-full h-full overflow-hidden;
+  }
+  body {
+    @apply overflow-hidden select-none font-sans text-black bg-black;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  /* Allow text selection inside content areas */
+  .selectable, .selectable * {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+}
+
+@layer utilities {
+  .shadow-xp {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  }
+  .shadow-xp-lg {
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.55);
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  /* XP-style outset button (used for OK/Cancel buttons in dialogs) */
+  .xp-btn {
+    background: linear-gradient(180deg, #f5f4ea 0%, #e8e6d4 100%);
+    border: 1px solid #aca899;
+    border-radius: 3px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: #000;
+    cursor: pointer;
+    min-width: 70px;
+  }
+  .xp-btn:hover {
+    border-color: #245edb;
+    background: linear-gradient(180deg, #ffffff 0%, #ece9d8 100%);
+  }
+  .xp-btn:active {
+    background: linear-gradient(180deg, #e8e6d4 0%, #f5f4ea 100%);
+  }
+  .no-scrollbar::-webkit-scrollbar { width: 16px; height: 16px; }
+  .no-scrollbar::-webkit-scrollbar-track { background: #f0f0f0; }
+  .no-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #d4d0c8, #aca899);
+    border: 1px solid #888;
+  }
+}
+
+/* Blocker: prevent body scroll on iOS when dragging windows */
+.dragging, .dragging * {
+  cursor: grabbing !important;
+  user-select: none !important;
+}
+.resizing, .resizing * {
+  user-select: none !important;
+}
+
+/* Mobile-friendly media query */
+@media (max-width: 640px) {
+  .desktop-icons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+    padding: 8px;
+  }
+}
